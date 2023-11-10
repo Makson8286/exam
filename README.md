@@ -1,4 +1,4 @@
-# grafana-prometteus_docker-swarm
+# grafana-prometteus_docker-cluster
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Hello, in this thread I will show you and tell you how to create a Grafana monitoring system on ubuntu 23.04 LTS in the "Docker cluster" together with "Prometheus, SNMP-Exporter, Alert Manager, CatVisor, Node-Exporter". all the commands that you need to write I will duplicate for you. 
@@ -37,7 +37,7 @@ Now that we have everything up and running, we need to add our users to Promethe
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Next, set up Grafana:
-IN THE BROWTHER-------> your-ip:3000
+IN THE BROWTHER-------> http://your-ip:3000
 
 Login: admin
 
@@ -54,6 +54,19 @@ Next, go to "Dashboards" click "New" --> "Import" and add our graphs
 P.S. You need to write the ID in the list below they will be indicated first 
 
 Here are the ones we will use today: 
-1. "11939" Docker Swarm Dashboard 
+1. "11939" Docker Swarm Dashboard
 2. "15798" Docker container monitoring
-3. 
+3. "14857" SNMP monitoring (Mikrotik, SNMP, SNMP V3, SNMP Exporter)
+4. "14694" Windows monitoring
+5. "1860" Linux monitoring
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Setup alerts in telegram
+
+Go to telegram and find the bot "TelepushBot" and run it. He will send you your token. 
+
+Insert the token that the bot sent you in the file "Alertmanager.yml"
+
+
+
