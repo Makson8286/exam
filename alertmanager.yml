@@ -7,7 +7,7 @@ route:
 receivers:
   - name: 'web.hook'
     webhook_configs:
-      - url: 'https://telepush.dev/api/inlets/alertmanager/63b28a'
+      - url: 'https://telepush.dev/api/inlets/alertmanager/your-token'
 inhibit_rules:
   - source_match:
       severity: 'critical'
