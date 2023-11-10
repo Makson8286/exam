@@ -19,7 +19,7 @@ services:
     volumes:
       - prom-data:/prometheus
       - prom-configs:/etc/prometheus
-      - /home/gr/alert.rules.yml:/alertmanager/alert.rules.yml
+      - /your/path/alert.rules.yml:/alertmanager/alert.rules.yml
   node-exporter:
     image: prom/node-exporter:v1.6.1
     ports:
@@ -53,7 +53,7 @@ services:
     networks:
       - loki
     volumes:
-      - /home/gr/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - /your/path/alertmanager.yml:/etc/alertmanager/alertmanager.yml
   snmp-exporter:
     image: quay.io/prometheus/snmp-exporter
     ports:
