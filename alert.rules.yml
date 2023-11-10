@@ -1,0 +1,21 @@
+groups:
+- name: alert.rules
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      description: "Server down {{ $labels.instance }} or service {{ $labels.job }}"
+      instancename: "{{ $labels.instance }}"
+      summary: "Instance down"
+- name: ContainerHealthAlerts
+  rules:
+  - alert: CadvisorContainerDown
+    expr: up{job="cadvisor"} == 0
+    labels:
+      severity: 'critical'
+    annotations:
+      summary: 'Alert: Cadvisor container is down'
+      description: 'The Cadvisor container is down or not responding.'
