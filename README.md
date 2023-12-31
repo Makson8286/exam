@@ -1,7 +1,7 @@
 # grafana-prometeus_docker-cluster
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-Hello, in this thread I will show you and tell you how to create a Grafana monitoring system on ubuntu 23.04 LTS in the "Docker cluster" together with "Prometheus, SNMP-Exporter, Alert Manager, CatVisor, Node-Exporter". all the commands that you need to write I will duplicate for you. 
+Hello, in this thread I will show you and tell you how to create a Grafana monitoring system on ubuntu 23.04 LTS in the "Docker cluster" together with "Prometheus, SNMP-Exporter, Alert Manager, CaDVisor, Node-Exporter". all the commands that you need to write I will duplicate for you. 
 ATTENTION in docker-compose, I create and use my cluster network because I have a network bug and then I can't access my containers.
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -33,6 +33,8 @@ docker-compose up -d
 Now that we have everything up and running, we need to add our users to Prometheus whom we will monitor, to do this, follow the path: /var/lib/docker/volumes/grafana_prom-configs/_data/prometheus.yml
 
 An example of what it looks like for me is in the file "example.yml"
+
+Аfter editing this file, restart Prometheus with this command:  docker ps | grep prometheus | awk '{print $1}' | xargs docker kill -s SIGHUP
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
