@@ -56,6 +56,7 @@ Next, go to "Dashboards" click "New" --> "Import" and add our graphs
 P.S. You need to write the ID in the list below they will be indicated first 
 
 Here are the ones we will use today: 
+
 1. "11939" Docker Swarm Dashboard
 2. "15798" Docker container monitoring
 3. "14857" SNMP monitoring (Mikrotik, SNMP, SNMP V3, SNMP Exporter)
@@ -93,3 +94,7 @@ sudo usermod -aG docker $USER
 docker run -d --name node-exporter -p 9100:9100 bitnami/node-exporter:latest
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Then go to prometheus.yml again and change the line with "node exporter" and "alertmanager" by entering the ip address of your server or "localhost".
+
+For some people, one of the options may not work.
