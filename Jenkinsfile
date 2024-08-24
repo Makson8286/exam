@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/exam2/ 
-                ls 
+                sudo docker swarm init
                 sudo docker compose up -d
                 
                 '''
