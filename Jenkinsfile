@@ -13,16 +13,16 @@ pipeline {
             steps {
                 script {
                     
-                    def alertmanagerFile = new File('alertmanager.yml')
-                    def content = alertmanagerFile.getText()
+                    def alertmanagerFilePath = 'alertmanager.yml'
+                    def content = readFile(file: alertmanagerFilePath)
                     content = content.replace('your-token', TELEPUSH_TOKEN)
-                    alertmanagerFile.setText(content)
+                    writeFile(file: alertmanagerFilePath, text: content)
 
-                    def dockerComposeFile = new File('docker-compose.yml')
-                    def dockerComposeContent = dockerComposeFile.getText()
+                    def dockerComposeFilePath = 'docker-compose.yml'
+                    def dockerComposeContent = readFile(file: dockerComposeFilePath)
                     dockerComposeContent = dockerComposeContent.replace('/your/path/alertmanager.yml', ALERTMANAGER_YML_PATH)
                     dockerComposeContent = dockerComposeContent.replace('/your/path/alert.rules.yml', ALERT_RULES_YML_PATH)
-                    dockerComposeFile.setText(dockerComposeContent)
+                    writeFile(file: dockerComposeFilePath, text: dockerComposeContent)
                 }
             }
         }
