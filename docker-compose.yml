@@ -63,6 +63,7 @@ services:
 networks:
   loki:
     driver: overlay
+    attachable: true
 volumes:
   grafana-data:
   grafana-configs:
