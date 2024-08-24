@@ -31,7 +31,7 @@ pipeline {
                 sh '''
                 cd /var/lib/jenkins/workspace/exam2/ 
                 ls 
-                docker compose up -d
+                sudo docker compose up -d
                 
                 '''
             }
