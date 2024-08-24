@@ -3,9 +3,9 @@ pipeline {
     environment {
         TELEPUSH_TOKEN = '63b28a'
         ALERTMANAGER_YML_FILE = 'alertmanager.yml'
-        ALERTMANAGER_YML_PATH = '/var/lib/jenkins/grafana/alertmanager.yml'
+        ALERTMANAGER_YML_PATH = '/var/lib/jenkins/workspace/exam2/alertmanager.yml'
         ALERT_RULES_YML_FILE = 'alert.rules.yml'
-        ALERT_RULES_YML_PATH = '/var/lib/jenkins/grafana/alert.rules.yml'
+        ALERT_RULES_YML_PATH = '/var/lib/jenkins/workspace/exam2/alert.rules.yml'
     }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
         stage('Build and Run') {
             steps {
                 sh '''
-                cd /var/lib/jenkins/grafana/ && docker-compose up -d
+                cd /var/lib/jenkins/workspace/exam2/ && docker-compose up -d
                 
                 '''
             }
