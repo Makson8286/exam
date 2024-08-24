@@ -29,7 +29,9 @@ pipeline {
         stage('Build and Run') {
             steps {
                 sh '''
-                cd /var/lib/jenkins/workspace/exam2/ && docker-compose up -d
+                cd /var/lib/jenkins/workspace/exam2/ 
+                ls 
+                docker compose up -d
                 
                 '''
             }
