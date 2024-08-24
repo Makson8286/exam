@@ -3,19 +3,15 @@ pipeline {
     environment {
         TELEPUSH_TOKEN = '63b28a'
         ALERTMANAGER_YML_FILE = 'alertmanager.yml'
-        ALERTMANAGER_YML_PATH = '/home/ubuntu/monitoring/grafana/alertmanager.yml'
+        ALERTMANAGER_YML_PATH = '/var/lib/jenkins/grafana/alertmanager.yml'
         ALERT_RULES_YML_FILE = 'alert.rules.yml'
-        ALERT_RULES_YML_PATH = '/home/ubuntu/monitoring/grafana/alert.rules.yml'
+        ALERT_RULES_YML_PATH = '/var/lib/jenkins/grafana/alert.rules.yml'
     }
 
     stages {
         stage('Clone') {
             steps {
                 script {
-                        sh '''
-                        cd /home/ubuntu/monitoring/
-                        GIT_SSH_COMMAND="ssh -i $SSH_KEY" git clone git@github.com:Makson8286/grafana.git -b main
-                        '''
                     
                     def alertmanagerFile = new File('alertmanager.yml')
                     def content = alertmanagerFile.getText()
