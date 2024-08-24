@@ -29,7 +29,7 @@ pipeline {
         stage('Build and Run') {
             steps {
                 sh '''
-                docker-compose up -d
+                /var/lib/jenkins/grafana/docker-compose up -d
                 '''
             }
         }
