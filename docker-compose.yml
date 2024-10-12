@@ -22,21 +22,20 @@ services:
       - ./alertmanager/alert.rules.yml:/alertmanager/alert.rules.yml
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   node-exporter:
-    image: prom/node-exporter:v1.8.1
+    image: prom/node-exporter:v1.8.2
     ports:
       - "9100:9100"
     networks:
       - loki
     volumes:
-      - prom-data:/prometheus
-      - ./alertmanager/alert.rules.yml:/etc/prometheus/alert.rules.yml
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /host/proc:/host/proc:ro
+      - /host/sys:/host/sys:ro
+      - /host/rootfs:/rootfs:ro
     command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-      - "--storage.tsdb.path=/prometheus"
-      - "--web.external-url=http://127.0.0.1:9090"
-      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
-      - "--web.console.templates=/usr/share/prometheus/consoles"
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude'
+      - '^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)'
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     ports:
