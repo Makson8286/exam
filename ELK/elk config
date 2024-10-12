@@ -1,0 +1,15 @@
+kibana.yml
+
+server.host: 0.0.0.0
+elasticsearch.hosts: ["http://your-ip:9200"]
+elasticsearch.username: "elastic"
+elasticsearch.password: "your-pass"
+
+elasticsearch.yml
+cluster.name: "elk-aws-cluster"
+node.name: node-1
+discovery.type: single-node
+network.host: 0.0.0.0
+http.port: 9200
+xpack.security.enabled: true
+xpack.security.authc.api_key.enabled: true
